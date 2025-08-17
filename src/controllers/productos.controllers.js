@@ -7,6 +7,15 @@ export const LeerProductos=(req,res)=>{
 }
 //agregar funcion para crear producto
 export const crearProducto=(req,res)=>{
- 
+  try{
+ //1-recibir el objeto por crear
+ console.log(req.body)
+ //2-validar datos del objeto
+ //3-guardar en base de datos
+ //4-enviar respuesta
+  }catch(error){
+    console.error(error)
+  }
+
 }
 //agregar funcipn para ei¿ditar producto

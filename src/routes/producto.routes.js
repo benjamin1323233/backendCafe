@@ -3,6 +3,8 @@ import { crearProducto, LeerProductos, test } from "../controllers/productos.con
 
 const router = Router();
 //get past put delete
+//get obtener
+//post subir
 router.route("/test").get(test)
 router.route("/").get(LeerProductos).post(crearProducto)
 export default router;
