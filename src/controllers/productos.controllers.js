@@ -31,4 +31,21 @@ await nuevoProducto.save()
     res.status(500).json({mensaje:"error al crear el producto"})
   }
 };
+export const leerProductoPorId= async(req,res)=>{
+  try{
+//obtener el param del req
+/*console.log(req.params)
+console.log(req.params.id)*/
+  //pedir el producto por id
+  const productoBuscado = await Producto.findById(req.params.id)
+  if(!productoBuscado){
+    return res.status(404).json({mensaje:"el producto no fue encontrado"})
+  }
+//mostrar el resultado
+res.status(200).json(productoBuscado)
+  }catch(error){
+    console.error(error)
+    res.status(501).json({mensaje:"error al obtener el producto seleccionado"})
+  }
+}
 //agregar funcipn para ei¿ditar producto
