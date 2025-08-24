@@ -1,21 +1,24 @@
-export const test =(req, res) => {//el req es de request, el res es el resultado, es decir lo que vamios a responder,y next en caso de hacer otras funciones
-  res.status(200).send("primera prueba desde el backend");//aqui tu eliges que poner en el resultado por ejemplo se pone 200 cuando se realizo exitosamente el request
-}
+import Producto from "../modules/producto.js";
+export const test = (req, res) => {
+  //el req es de request, el res es el resultado, es decir lo que vamios a responder,y next en caso de hacer otras funciones
+  res.status(200).send("primera prueba desde el backend"); //aqui tu eliges que poner en el resultado por ejemplo se pone 200 cuando se realizo exitosamente el request
+};
 
-export const LeerProductos=(req,res)=>{
-
-}
+export const LeerProductos = (req, res) => {};
 //agregar funcion para crear producto
-export const crearProducto=(req,res)=>{
-  try{
- //1-recibir el objeto por crear
- console.log(req.body)
- //2-validar datos del objeto
- //3-guardar en base de datos
- //4-enviar respuesta
-  }catch(error){
-    console.error(error)
+export const crearProducto = async(req, res) => {
+  try {
+    //1-recibir el objeto por crear
+   // console.log(req.body);
+    //2-validar datos del objeto
+    //3-guardar en base de datos
+const nuevoProducto = new Producto(req.body);
+await nuevoProducto.save()
+    //4-enviar respuesta
+    res.status(201).json({mensaje:"el objeto fue creado con exito"})
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({mensaje:"error al crear el producto"})
   }
-
-}
+};
 //agregar funcipn para ei¿ditar producto
