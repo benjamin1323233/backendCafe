@@ -50,11 +50,16 @@ res.status(200).json(productoBuscado)
 }
 export const editarProducto = async(req,res)=>{
  try{
-
-  }catch(error){
-    res.status(500).json({mensaje:"error al borrar el producto"})
+  //buscar producto por el id 
+  const productoModificado = await Producto.findByIdAndUpdate(req.params.id,req. body)
+  if(!productoModificado){
+    return res.status(404).json({mensaje:"producto no encontrado"})
   }
-
+  //enviar el resultado
+  res.status(200).json({mensaje:"producto editado exitosamente"})
+  }catch(error){
+    res.status(500).json({mensaje:"error al editar el producto"})
+  }
 }
 export const borrarProducto = async(req,res)=>{
   try{
