@@ -48,4 +48,25 @@ res.status(200).json(productoBuscado)
     res.status(501).json({mensaje:"error al obtener el producto seleccionado"})
   }
 }
+export const editarProducto = async(req,res)=>{
+ try{
+
+  }catch(error){
+    res.status(500).json({mensaje:"error al borrar el producto"})
+  }
+
+}
+export const borrarProducto = async(req,res)=>{
+  try{
+  //buscar producto por el id 
+  const productoEliminado = await Producto.findByIdAndDelete(req.params.id)
+  if(!productoEliminado){
+    return res.status(404).json({mensaje:"producto no encontrado"})
+  }
+  //enviar el resultado
+  res.status(200).json({mensaje:"producto eliminado exitosamente"})
+  }catch(error){
+    res.status(500).json({mensaje:"error al borrar el producto"})
+  }
+}
 //agregar funcipn para ei¿ditar producto
