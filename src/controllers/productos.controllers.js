@@ -4,7 +4,17 @@ export const test = (req, res) => {
   res.status(200).send("primera prueba desde el backend"); //aqui tu eliges que poner en el resultado por ejemplo se pone 200 cuando se realizo exitosamente el request
 };
 
-export const LeerProductos = (req, res) => {};
+export const LeerProductos = async(req, res) => {
+try{
+ //buscar pruductos
+ const listaProductos = await Producto.find()
+ //enviar resp al front
+ res.status(200).json(listaProductos)
+}catch(error){
+  console.error(error)
+  res.status(500).json({mensaje:"error al compilar los datos"})
+}
+};
 //agregar funcion para crear producto
 export const crearProducto = async(req, res) => {
   try {

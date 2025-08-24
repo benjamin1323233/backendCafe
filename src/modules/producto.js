@@ -3,7 +3,7 @@ const productoSchema = new Schema ({
     nombreProducto: {
         type: String,
         minLength:2,
-        maxLenght:100,
+        maxLength:100,
         required:true,
         unique:true
     },
@@ -30,13 +30,13 @@ const productoSchema = new Schema ({
     descripcion_breve:{
         type: String,
         minLength:5,
-        maxLenght:250,
+        maxLength:250,
         required:true
     },
     descripcion_amplia:{
         type: String,
         minLength:10,
-        maxLenght:500,
+        maxLength:500,
         required:true,
     }
 })
